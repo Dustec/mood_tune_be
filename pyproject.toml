@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "moodtune-backend"
+version = "0.1.0"
+description = "MoodTune backend with FastAPI, SQLAlchemy 2.x, Alembic, PostgreSQL"
+authors = [{ name = "MoodTune" }]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.30.0",
+  "sqlalchemy>=2.0.30",
+  "psycopg[binary]>=3.1.19",
+  "alembic>=1.13.2",
+  "pydantic-settings>=2.3.4",
+  "python-dotenv>=1.0.1",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["app"]
+addopts = "-q"
