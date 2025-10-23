@@ -6,12 +6,11 @@ from sqlalchemy.orm import sessionmaker
 
 
 class Settings(BaseSettings):
-DATABASE_URL: str
+    DATABASE_URL: str
 
-
-class Config:
-env_file = ".env"
-extra = "ignore"
+    class Config:
+        env_file = ".env"
+        extra = "ignore"
 
 
 settings = Settings()
@@ -20,11 +19,9 @@ SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 
 # FastAPI dependency
-
-
 def get_session() -> Generator:
-session = SessionLocal()
-try:
-yield session
-finally:
-session.close()
+    session = SessionLocal()
+    try:
+        yield session
+    finally:
+        session.close()
