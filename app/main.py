@@ -24,6 +24,6 @@ async def healthz():
 
 # Manejo simple de errores conocidos (opcional; FastAPI ya maneja HTTPException)
 @app.exception_handler(Exception)
-async def unhandled_exc(_, exc: Exception):
+async def unhandled_exc(_):
     # Evita exponer secrets: solo mensaje genérico
     return JSONResponse(status_code=500, content={"detail": "internal_error"})
